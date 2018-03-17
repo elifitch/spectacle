@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
+  Anim, Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
   Heading, Image, Layout, Link, ListItem, List, Markdown, MarkdownSlides, Quote, Slide, SlideSet,
   TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text, GoToAction
 } from '../../src';
@@ -93,7 +93,7 @@ export default class Presentation extends React.Component {
             lang="jsx"
             source={require('raw-loader!../assets/deck.example')}
             margin="20px auto"
-            overflow = "overflow"
+            overflow="overflow"
           />
         </Slide>
         <Slide goTo={3}>
@@ -118,9 +118,35 @@ export default class Presentation extends React.Component {
             </Heading>
           </Appear>
         </Slide>
+        <Slide transition={['slide']}>
+          <Anim
+            fromStyle={{
+              opacity: 0,
+              transform: 'translate3d(0px, -100px, 0px)  scale(1) rotate(0deg)'
+            }}
+            toStyle={[
+              {
+                opacity: 1,
+                transform: 'translate3d(0px, 0px, 0px)  scale(1) rotate(0deg)'
+              },
+              {
+                opacity: 1,
+                transform: 'translate3d(0px, 0px, 0px) scale(1.6) rotate(-15deg)'
+              },
+            ]}
+            easing={'bounceOut'}
+            transitionDuration={500}
+          >
+            <div>
+              <Heading size={6} caps fit textColor="secondary">
+                Flexible<br />animations
+              </Heading>
+            </div>
+          </Anim>
+        </Slide>
         <Slide>
           <Heading size={2} textColor="secondary" margin="0.25em">
-           Mix it up!
+            Mix it up!
           </Heading>
           <Heading size={6} textColor="tertiary">
             You can even jump to different slides with a standard button or custom component!
@@ -166,9 +192,9 @@ export default class Presentation extends React.Component {
               Steps
             </Heading>
           </Appear>
-            <Heading size={1} caps fit textColor="secondary">
-              Steps: {this.state.steps}
-            </Heading>
+          <Heading size={1} caps fit textColor="secondary">
+            Steps: {this.state.steps}
+          </Heading>
         </Slide>
         <Slide transition={['zoom', 'fade']} bgColor="primary">
           <Heading caps fit>Flexible Layouts</Heading>
@@ -245,7 +271,7 @@ const myCode = (is, great) => 'for' + 'sharing';
             <Heading size={1} caps fit textColor="tertiary">
               Your presentations are interactive
             </Heading>
-            <Interactive/>
+            <Interactive />
           </Slide>
         </SlideSet>
         <Slide transition={['slide']} bgColor="primary"
@@ -258,7 +284,7 @@ const myCode = (is, great) => 'for' + 'sharing';
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHeaderItem/>
+                  <TableHeaderItem />
                   <TableHeaderItem>2011</TableHeaderItem>
                   <TableHeaderItem>2013</TableHeaderItem>
                   <TableHeaderItem>2015</TableHeaderItem>
@@ -279,13 +305,13 @@ const myCode = (is, great) => 'for' + 'sharing';
                 </TableRow>
                 <TableRow>
                   <TableItem>Pepperoni</TableItem>
-                  <TableItem/>
+                  <TableItem />
                   <TableItem>50.2%</TableItem>
                   <TableItem>77.2%</TableItem>
                 </TableRow>
                 <TableRow>
                   <TableItem>Olives</TableItem>
-                  <TableItem/>
+                  <TableItem />
                   <TableItem>24.9%</TableItem>
                   <TableItem>55.9%</TableItem>
                 </TableRow>
@@ -297,7 +323,7 @@ const myCode = (is, great) => 'for' + 'sharing';
           <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
             Made with love in Seattle by
           </Heading>
-          <Link href="http://www.formidable.com"><Image width="100%" src={images.logo}/></Link>
+          <Link href="http://www.formidable.com"><Image width="100%" src={images.logo} /></Link>
         </Slide>
       </Deck>
     );
